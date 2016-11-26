@@ -1,0 +1,19 @@
+#!/bin/bash
+MOONLIGHT_PATH=../moonlight/target/MoonlightController-1.0-jar-with-dependencies.jar
+JAR_NAME=MoonlightSampleApp.jar
+
+if [ ! -f $MOONLIGHT_PATH ]; then
+	echo 'Invalid $MOONLIGHT_PATH value. Make sure path is correct and that Moonlight is compiled.'
+	exit
+fi
+
+mkdir classes
+javac -d classes -classpath $MOONLIGHT_PATH src/org/moonlightcontroller/samples/SampleApp.java
+cd classes
+jar cvmf ../src/META-INF/services/org.moonlightcontroller.bal.BoxApplication $JAR_NAME * ../lib
+mv $JAR_NAME ..
+cd ..
+rm -rf classes
+
+echo "If no errors were printed so far, the JAR has been successfully created: $JAR_NAME"
+echo "To use it, copy this file to MOONLIGHT_DIR/target/apps and run Moonlight."
