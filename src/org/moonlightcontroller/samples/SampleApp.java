@@ -41,9 +41,11 @@ import org.openboxprotocol.protocol.IStatement;
 import org.openboxprotocol.protocol.OpenBoxHeaderMatch;
 import org.openboxprotocol.protocol.Priority;
 import org.openboxprotocol.protocol.Statement;
-import org.openboxprotocol.protocol.topology.IApplicationTopology;
-import org.openboxprotocol.protocol.topology.InstanceLocationSpecifier;
-import org.openboxprotocol.protocol.topology.TopologyManager;
+
+import org.moonlightcontroller.topology.IApplicationTopology;
+import org.moonlightcontroller.topology.InstanceLocationSpecifier;
+import org.moonlightcontroller.topology.TopologyManager;
+
 import org.openboxprotocol.types.TransportPort;
 
 import com.google.common.collect.ImmutableList;
@@ -184,7 +186,7 @@ public class SampleApp extends BoxApplication{
 		ToDevice toDevice = new ToDevice("ToDevice_SampleApp", props.getProperty(PROP_OUT_IFC));
 		FromDump fromDump = new FromDump("FromDump_SampleApp", props.getProperty(PROP_IN_DUMP), false, true);
 		ToDump toDump = new ToDump("ToDump_SampleApp", props.getProperty(PROP_OUT_DUMP));
-		HeaderClassifier classify = new HeaderClassifier("HeaderClassifier_SampleApp", rules, Priority.HIGH);
+		HeaderClassifier classify = new HeaderClassifier("HeaderClassifier_SampleApp", rules, Priority.HIGH, true);
 		org.moonlightcontroller.blocks.Alert alert = 
 				new org.moonlightcontroller.blocks.Alert("Alert_SampleApp", "Alert from SampleApp", 1, true, 1000);
 		Discard discard = new Discard("Discard_SampleApp");
