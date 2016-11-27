@@ -10,7 +10,7 @@ fi
 mkdir classes
 javac -d classes -classpath $MOONLIGHT_PATH src/org/moonlightcontroller/samples/SampleApp.java
 cd classes
-jar cvmf ../src/META-INF/services/org.moonlightcontroller.bal.BoxApplication $JAR_NAME * ../lib
+jar cvmf ../src/META-INF/services/org.moonlightcontroller.bal.BoxApplication $JAR_NAME * ../META-INF/services/org.moonlightcontroller.bal.BoxApplication 
 mv $JAR_NAME ..
 cd ..
 rm -rf classes
